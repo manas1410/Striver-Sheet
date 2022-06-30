@@ -2,13 +2,14 @@
 problem url :-https://leetcode.com/problems/majority-element/
 '''
 class Solution:
-    def myPow(self, x: float, n: int) -> float:
-        return x**n
-        '''if n<0:
-            return self.myPow(1/x,-1*n)
-        if n==1:
-            return x
-        if n>1 and n%2==0:
-            num = self.myPow(x,n//2)
-            return num * num
-        return x*self.myPow(x,n-1)'''
+    def majorityElement(self, nums: List[int]) -> int:
+        majority = len(nums)//2
+        d = {}
+        for i in nums:
+            try:
+                d[i]+=1
+            except:
+                d[i]=1
+        for i in d.keys():
+            if d[i]>majority:
+                return i
